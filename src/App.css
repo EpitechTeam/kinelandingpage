@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("./fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("./fonts/Roboto-Bold.ttf");
+}
+
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("./fonts/Roboto-Regular.ttf");
+}
+
+
+@font-face {
+  font-family: "Roboto-Thin";
+  src: url("./fonts/Roboto-Thin.ttf");
+}
+
+body {
+  font-family: Roboto-Regular, sans-serif;
+}
+
+.font-bold {
+  font-family: Roboto-Bold, sans-serif;
+}
+
+.font-black {
+  font-family: Roboto-Black, sans-serif;
+}
+
+button:focus {
+  outline: none;
+}
+
+.kine-input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.mobile-show {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-margintop {
+    margin-top: 100px;
+  }
+
+  .mobile-title {
+    font-size: 22px !important;
+  }
+
+  .mobile-desc {
+    font-size: 18px !important;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  textarea {
+    width: 100% !important;
+  }
+
+  .mobile-nav {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .mobile-mt {
+    margin-top: 20px;
+  }
+
+  .mobile-show {
+    display: flex;
+  }
+
+  .mobile-w-100 {
+    width: 100% !important;
+  }
+  
+}
