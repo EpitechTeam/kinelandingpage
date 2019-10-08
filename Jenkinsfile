@@ -1,20 +1,26 @@
-pipeline {
-    stages {
-        stage("Build") {
-            steps {
-                sh '''
-                    git checkout master
-                    git pull
-                    npm install
-
-                    cp /home/debian/.env/kinelandingpage/.env /var/lib/jenkins/workspace/kinelandingpage/
-
-                    npm run build
-                    chown -R jenkins:jenkins build
-                    rm -rf /home/debian/kinelandingpage/build
-                    cp -r /var/lib/jenkins/workspace/kinelandingpage/build/ /home/debian/kinelandingpage/
-                '''
-            }
-        }
+node {
+  try {
+    stage('Checkout') {
+      checkout scm
     }
+    stage('Environment') {
+      sh 'git --version'
+      echo "Branch: ${env.BRANCH_NAME}"
+      sh 'docker -v'
+      sh 'export NODE_ENV=production'
+      sh 'printenv'
+    }
+    stage('Install dependencies'){
+      sh 'sudo docker-compose build'
+    }
+    stage('Deploy'){
+      if (env.BRANCH_NAME == 'master'){
+        sh 'sudo docker-compose up -d'
+      }
+    }
+  }
+  catch (err) {
+    throw err
+  }
 }
+
